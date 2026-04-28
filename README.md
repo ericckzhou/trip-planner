@@ -1,7 +1,6 @@
 # Travel Planner - MERN Stack Application
 
 A full-stack travel planning web application built with MongoDB, Express, React, and Node.js. Users can search destinations, view real-time weather and attractions, create and manage trip itineraries, and save trips to their accounts.
-Running project
 
 ## Features
 
@@ -42,15 +41,17 @@ Running project
 
 ### Running project
 
-cd backend
-npm install
-cp .env.example .env (fill in)
-npm run dev
+- cd backend
+- npm install
+- cp .env.example .env (fill in)
+- npm run dev
 
-cd frontend
-npm install
-cp .env.example .env
-npm start
+- cd ..
+
+- cd frontend
+- npm install
+- cp .env.example .env
+- npm start
 
 
 <img width="792" height="633" alt="image" src="https://github.com/user-attachments/assets/a515046e-2599-4b90-96b6-ec76edabeef8" />
