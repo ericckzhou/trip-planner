@@ -22,6 +22,8 @@ const registerUser = async (email, password, firstName, lastName) => {
     lastName,
   });
 
+  user.username = user._id.toString(); // Set username to user ID for now 
+
   await user.save();
 
   // Generate token

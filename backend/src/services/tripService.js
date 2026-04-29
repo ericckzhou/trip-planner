@@ -99,7 +99,7 @@ const addItineraryItem = async (tripId, userId, itemData) => {
   }
 
   // Check authorization
-  if (trip.userId.toString() !== userId.toString()) {
+  if (trip.userId._id.toString() !== userId.toString()) {
     throw new Error('Not authorized to add items to this trip');
   }
 
