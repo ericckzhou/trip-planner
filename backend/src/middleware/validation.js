@@ -31,6 +31,14 @@ const validateLogin = [
   handleValidationErrors,
 ];
 
+const validateResetPassword = [
+  body('email').isEmail().normalizeEmail(),
+  body('newPassword')
+    .isLength({ min: 6 })
+    .withMessage('New password must be at least 6 characters'),
+  handleValidationErrors,
+];
+
 // Trip validation rules
 const validateTripCreation = [
   body('title').trim().notEmpty().withMessage('Trip title is required'),
@@ -56,6 +64,7 @@ const validateDestinationSearch = [
 module.exports = {
   validateRegister,
   validateLogin,
+  validateResetPassword,
   validateTripCreation,
   validateItineraryItem,
   validateDestinationSearch,

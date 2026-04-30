@@ -22,7 +22,7 @@ const registerUser = async (email, password, firstName, lastName) => {
     lastName,
   });
 
-  user.username = user._id.toString(); // Set username to user ID for now 
+  user.username = user.email; // Set username to user ID for now 
 
   await user.save();
 
@@ -85,9 +85,24 @@ const updateUserProfile = async (userId, updates) => {
   return user;
 };
 
+const resetPasswordByEmail = async (email, newPassword) => {
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  const user = await User.findOne({ email: normalizedEmail }).select('+password');
+
+  if (!user) {
+    return { reset: false };
+  }
+
+  user.password = newPassword;
+  await user.save();
+
+  return { reset: true, user: user.toJSON() };
+};
+
 module.exports = {
   registerUser,
   loginUser,
   getUserById,
   updateUserProfile,
+  resetPasswordByEmail,
 };

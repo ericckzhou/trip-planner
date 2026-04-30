@@ -78,6 +78,14 @@ export const Login = () => {
           </button>
         </form>
 
+        {/* Reset Password Link */}
+        <p className="text-center text-gray-600 mt-4">
+          Forgot your password?{' '}
+          <Link to="/reset-password" className="text-blue-600 hover:underline font-medium">
+            Reset it here
+          </Link>
+        </p>
+
         {/* Register Link */}
         <p className="text-center text-gray-600 mt-6">
           Don't have an account?{' '}

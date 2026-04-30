@@ -67,3 +67,20 @@ exports.updateProfile = asyncHandler(async (req, res) => {
     data: user,
   });
 });
+
+/**
+ * @POST /api/auth/reset-password
+ * Reset password (simple: email + new password)
+ */
+exports.resetPassword = asyncHandler(async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  user = await User.findOne({ email });
+
+  await authService.resetPasswordByEmail(email, newPassword);
+
+  res.status(200).json({
+    success: true,
+    message: 'If the account exists, password has been reset.',
+  });
+});

@@ -91,6 +91,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const resetPassword = async (email, newPassword) => {
+    try {
+      await authService.resetPassword({ email, newPassword });
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        error: error.response?.data?.message || 'Password reset failed',
+      };
+    }
+  };
+
   const value = {
     user,
     token,
@@ -100,6 +112,7 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     updateProfile,
+    resetPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
